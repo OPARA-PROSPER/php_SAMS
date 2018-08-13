@@ -1,0 +1,150 @@
+body{
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100vh;
+    color: white;
+    font-family: Ubuntu;
+    background: rgb(206, 200, 200);
+}
+
+/* This SECTION is for the HEADER | PROFILE section of the dashboard */
+header{
+    width: 20%;
+    height: 100vh;
+    background: rgb(44, 44, 44);
+    text-align: center;
+}
+header img{
+    width: 65%;
+    height: 25%;
+    border: 5px solid rgb(145, 144, 144);
+    margin-top: 10%;
+    border-radius: 100%;
+}
+button#logout{
+    position: absolute;
+    top: 93vh;
+    padding: .5em 0;
+    width: 6%;
+    font-size: 17px;
+    border: none;
+    background: rgb(255, 255, 255);
+    color: rgb(17, 16, 16);
+    border-radius: 5px; 
+}
+button#edit_button{
+    background: rgb(145, 144, 144);
+    border: none;
+    width: 40%;
+    padding: .5em 0;
+    font-size: 17px;
+    color: white;
+}
+#user_details{
+    width: 95%;
+    margin: 15% auto 0;
+}
+#user_details h2{
+    text-transform: uppercase;
+    width: 100%;
+}
+header table{
+    margin: 0 auto 5%;
+    text-align: left;
+    width: 90%;
+    font-size: 17px;
+    border-collapse: collapse;
+    height: 150px;
+}
+tr{
+    border-bottom: 2px solid rgb(44, 44, 44);
+}
+tr:last-child{
+    border-bottom: none;
+}
+td{
+    border: none;
+    padding: .5em .5em;
+}
+.detail_item{
+    background: rgb(117, 116, 117);
+    text-transform: capitalize;
+}
+.detail_input{
+    background: rgb(72, 72, 73);
+}
+#detail{
+    /* color: red; */
+    font-size: 20px;
+    margin: auto;
+}
+#std_profile{
+    width: 100%;
+}
+
+
+#assignment_form{
+    display: flex;
+}
+section{
+    width: 40%;
+    /* background: gray; */
+}
+section input{
+    width: 98%;
+    padding: 1.5em .5em;
+    font-size: 15px;
+    /* border-radius: 10px; */
+    border: none;
+    margin-top: .5em;
+}
+section input[type=submit]{
+    width: 150px;
+    background: rgb(54, 180, 54);
+    color: white;
+}
+#file{
+    width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+#file_icon{
+    cursor: pointer;
+}
+#file + label {
+    font-size: 3em;
+    /* font-weight: 700; */
+    color: white;
+    background-color: black;
+    display: inline-block;
+    width: 90px;
+    height: 70px;
+    text-align: center;
+    /* border-radius: 100%; */
+    margin: .15em 0 0;
+}
+#file:focus + label,
+#file + label:hover {
+    background-color: rgb(110, 110, 110);
+}
+
+
+
+.post{
+    background: white;
+    padding: .5em;
+    margin: 3% 0;
+    color: black;
+}
+aside{
+    background: rgb(40, 40, 40);
+    width: 30%;
+    text-align: center;
+}
