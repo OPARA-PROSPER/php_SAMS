@@ -26,7 +26,7 @@ session_destroy();
         h1{
             font-size: 50px;
             background: rgb(2, 117, 2);
-            width: 35%;
+            width: 50%;
             padding: .3em 0;
             margin: auto auto 1em;
             border-radius: 5px;

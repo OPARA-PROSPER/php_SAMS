@@ -1,10 +1,14 @@
 <?php
+// session_start();
+header("Content-Type: application/json");
 
-if(isset($_POST["submit"])){
+$file = $_FILES["file"];
+
+if(isset($file)){
 
     // $img = $_POST["img"]
 
-    $file = $_FILES["file"];
+   
     // This lines of codes gets the details of the file been uploaded
     $fileName = $file['name'];
     $fileType = $file['type'];
@@ -23,22 +27,29 @@ if(isset($_POST["submit"])){
                 $uploadLocation = "uploads/".$newFileName;
 
                 if(move_uploaded_file($fileTempLocation, $uploadLocation)){
-                    echo "Your file has been successfully uploaded";
-                    exit();
+                    $_SESSION["success"] = "Your file has been successfully uploaded";
+                    echo($_SESSION["success"]);
+                    // exit();
+
                     require 'db.php';
                     $sql = "INSERT INTO `uploads`(`id`, `file_name`, `file_type`, `file_size`, `file_path`, `date`) VALUES (NULL, '$fileName', '$fileType', '$fileSize', '$uploadLocation', CURRENT_TIMESTAMP)";
                     $prep = $conn->prepare($sql);
                     $prep->execute();
+
+                   
                 }
             }else{
-                echo "The file is too large";
-                exit();
+                $_SESSION['error'] = "The file is too large";
+                // exit();
+                echo($_SESSION["error"]);
             }
         }else{
-            echo "There was an error uploading your file to the database";
+            $_SESSION['error'] = "There was an error uploading your file to the database";
+            echo($_SESSION["error"]);
         }
     }else{
-        echo "The file you tried uploading is not supported";
+        $_SESSION['error'] = "The file you tried uploading is not supported";
+        echo($_SESSION["error"]);
     }
 }
 
