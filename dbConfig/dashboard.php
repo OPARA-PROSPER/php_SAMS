@@ -109,15 +109,28 @@ $type = $_SESSION["type"];
 </section>
 
 <aside>
-    <h3>Assignmnet Dashboard</h3>
-    <?php 
-        
+    <h3 class="Reg_student">Submitted Assignment</h3>
+    
+    <div id="sub">
+    <?php
 
+    require 'db.php';
+    $sql = " select * from uploads ";
+    $prep = $conn ->prepare($sql);
+    $prep->execute();
+
+    $result = $prep ->fetchAll(PDO::FETCH_OBJ);
+    $ib = '';
+    foreach($result as $row){
+        $ib .= '<div class="oubx">' 
+        . '<a href="'.$row->file_path.'" id="student_name">' . $row->file_name . '</a>'
+        . '</div>';
+    }
+
+    echo ( $ib );
     ?>
-<p>
-   
-</p>
 
+</div>
 
     <a href="logout.php">
         <button id="logout">logout</button>

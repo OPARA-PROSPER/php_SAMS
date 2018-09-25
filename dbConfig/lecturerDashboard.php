@@ -66,11 +66,11 @@ $type = $_SESSION["type"];
         </button>
         </a>
 
-        <!-- <a href="coursereg.php"> -->
-            <!-- <button id="edit_button"> -->
-                <!-- Register courses -->
-            <!-- </button> -->
-        <!-- </a> -->
+        <a href="lecturer_coursereg.php">
+            <button id="edit_button">
+                Register courses
+            </button>
+        </a>
     </div>
     
 
@@ -80,7 +80,7 @@ $type = $_SESSION["type"];
 <section id="submit_assignment">
 
     <div class="assignment_form">
-        <button class="file" id="upload_button">+</button>
+        <!-- <button class="file" id="upload_button">+</button> -->
         <form id="assignment_form" class="assignment_form">
             <input  id="assignment_input" type="text" placeholder="Enter message here...">
             <input type="submit" value="submit" name="text_submit">
@@ -91,28 +91,46 @@ $type = $_SESSION["type"];
     <article id="post">
     </article>
 
-<div id="upload_div">
-    <button id="hide_button">*</button>
-    <form id="upload_form" action="upload.php" method="post" enctype="multipart/form-data">
-        <input type="file" name="file" id="file">
-        <label for="file" id="file_icon" name="filelabel"> + </label>
-        <input type="submit" value="submit" name="submit" id="submit">
-
-        <div class="bar" id="bar">
-            <span class="bar-fill" id="pb">
-            </span>
-        </div>
-    </form>
-</div>
+<!-- <div id="upload_div"> -->
+    <!-- <button id="hide_button">*</button> -->
+    <!-- <form id="upload_form" action="upload.php" method="post" enctype="multipart/form-data"> -->
+        <!-- <input type="file" name="file" id="file"> -->
+        <!-- <label for="file" id="file_icon" name="filelabel"> + </label> -->
+        <!-- <input type="submit" value="submit" name="submit" id="submit"> -->
+        <!-- <div class="bar" id="bar"> -->
+            <!-- <span class="bar-fill" id="pb"> -->
+            <!-- </span> -->
+        <!-- </div> -->
+    <!-- </form> -->
+<!-- </div> -->
     
 
 </section>
 
 <aside>
-    <h3>Assignmnet Dashboard</h3>
     
     <div id="registered_students">
-        <h2>Registered Students</h2>
+        <h2 id="Reg_student">Registered Students</h2>
+    <div id="sub">
+    <?php
+
+    require 'db.php';
+    $sql = " select studentName from coursereg ";
+    $prep = $conn ->prepare($sql);
+    $prep->execute();
+
+    $result = $prep ->fetchAll(PDO::FETCH_OBJ);
+    $ib = '';
+    foreach($result as $row){
+        $ib .= '<div class="oubx">' 
+        . '<button id="student_name" class="student_button">' . $row->studentName . '</button>'
+        . '</div>';
+    }
+
+    echo ( $ib );
+    ?>
+    </div>
+
     </div>
 
 
