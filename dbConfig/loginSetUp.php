@@ -32,9 +32,10 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
                     $_SESSION["faculty"] = $fetch->faculty;
                     $_SESSION["username"] = $fetch->username;
                     $_SESSION["email"] = $fetch->email;
+                    $_SESSION["type"] = "lecturer";
 
 
-                    header('location: dashboard.php');
+                    header('location: lecturerDashboard.php');
 
                 }
 
@@ -57,6 +58,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
                     $_SESSION["faculty"] = $fetch->faculty;
                     $_SESSION["username"] = $fetch->username;
                     $_SESSION["email"] = $fetch->email;
+                    $_SESSION["type"] = "student";
 
                     header('location: dashboard.php');
 

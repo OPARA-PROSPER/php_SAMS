@@ -33,7 +33,11 @@ session_start();
 
 </div>
 
-<a href="dashboard.php">
+<a href="<?php if($_SESSION["type"] === "student"){
+    echo "dashboard.php";
+}elseif($_SESSION["type"] === "lecturer"){
+    echo "lecturerDashboard.php";
+} ?>" >
     <button>
         Back to dashboard
     </button> 

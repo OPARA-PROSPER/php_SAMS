@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 if($_SERVER["REQUEST_METHOD"] === "POST"){
     require 'db.php';
@@ -14,7 +15,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     $course9 = $_POST["course9"];
     $course10 = $_POST["course10"];
 
-    $sql = "INSERT INTO coursereg(`course1`, `course2`, `course3`, `course4`, `course5`, `course6`, `course7`, `course8`, `course9`, `course10`) VALUES ('{$course1}', '{$course2}', '{$course3}', '{$course4}', '{$course5}', '{$course6}', '{$course7}', '{$course8}', '{$course9}', '{$course10}') ";
+    $sql = "INSERT INTO coursereg(`studentName`, `course1`, `course2`, `course3`, `course4`, `course5`, `course6`, `course7`, `course8`, `course9`, `course10`) VALUES ('{$_SESSION["username"]}', '{$course1}', '{$course2}', '{$course3}', '{$course4}', '{$course5}', '{$course6}', '{$course7}', '{$course8}', '{$course9}', '{$course10}') ";
 
     $prep = $conn->prepare($sql);
     $prep->execute();

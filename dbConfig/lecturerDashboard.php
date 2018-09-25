@@ -66,11 +66,11 @@ $type = $_SESSION["type"];
         </button>
         </a>
 
-        <a href="coursereg.php">
-            <button id="edit_button">
-                Register courses
-            </button>
-        </a>
+        <!-- <a href="coursereg.php"> -->
+            <!-- <button id="edit_button"> -->
+                <!-- Register courses -->
+            <!-- </button> -->
+        <!-- </a> -->
     </div>
     
 
@@ -110,13 +110,10 @@ $type = $_SESSION["type"];
 
 <aside>
     <h3>Assignmnet Dashboard</h3>
-    <?php 
-        
-
-    ?>
-<p>
-   
-</p>
+    
+    <div id="registered_students">
+        <h2>Registered Students</h2>
+    </div>
 
 
     <a href="logout.php">
@@ -152,6 +149,20 @@ app.uploader({
     }
 });
 });
+
+// // let Reg_Students = document.getElementById("registered_students").children[0];
+// let li = document.createElement("div");
+// Reg_Students.appendChild(li);
+// li.textContent = "<?php 
+// require 'db.php';
+// $sql = "SELECT * FROM coursereg";
+// $prep = $conn ->prepare($sql);
+// $prep->execute();
+// 
+// $result = $prep ->fetchAll(PDO::FETCH_OBJ);
+// 
+// echo $result;
+// ?>"
 // </script>
 </body>
 </html>
