@@ -1,5 +1,5 @@
 <?php
-// session_start();
+session_start();
 header("Content-Type: application/json");
 
 $file = $_FILES["file"];
@@ -32,7 +32,7 @@ if(isset($file)){
                     // exit();
 
                     require 'db.php';
-                    $sql = "INSERT INTO `uploads`(`id`, `file_name`, `file_type`, `file_size`, `file_path`, `date`) VALUES (NULL, '$fileName', '$fileType', '$fileSize', '$uploadLocation', CURRENT_TIMESTAMP)";
+                    $sql = "INSERT INTO `uploads`(`id`, `studentName`, `file_name`, `file_type`, `file_size`, `file_path`, `date`) VALUES (NULL, '$_SESSION["username"]', '$fileName', '$fileType', '$fileSize', '$uploadLocation', CURRENT_TIMESTAMP)";
                     $prep = $conn->prepare($sql);
                     $prep->execute();
 

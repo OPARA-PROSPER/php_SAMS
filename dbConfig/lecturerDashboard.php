@@ -25,7 +25,7 @@ $type = $_SESSION["type"];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Student Dashboard | Set up your Profile</title>
+    <title>Lecturer Dashboard | Set up your Profile</title>
     <link rel="stylesheet" href="../css/dashboard.css">
 </head>
 <body>
@@ -115,18 +115,33 @@ $type = $_SESSION["type"];
     <?php
 
     require 'db.php';
-    $sql = " select studentName from coursereg ";
+    $sql = " select * from coursereg ";
     $prep = $conn ->prepare($sql);
     $prep->execute();
 
     $result = $prep ->fetchAll(PDO::FETCH_OBJ);
     $ib = '';
+
+    $lect_sql = "select * from lecturer_coursereg";
+    $lect_prep = $conn->prepare($lect_sql);
+    $lect_prep->execute();
+
+    $lect_result = $lect_prep->fetchAll(PDO::FETCH_OBJ);
+
     foreach($result as $row){
-        $ib .= '<div class="oubx">' 
-        . '<button id="student_name" class="student_button">' . $row->studentName . '</button>'
-        . '</div>';
+        foreach($lect_result as $lect_row){
+            if($lect_row->lecturerName === $_SESSION["username"]){
+                if($row->course1 == $lect_row->course1 || $row->course2 == $lect_row->course2 ){
+                    $ib .= '<div class="oubx">' 
+                . '<button id="student_name" class="student_button">' . $row->studentName . '</button>'
+                . '</div>';
+                }
+            }
+        }
+        
     }
 
+            
     echo ( $ib );
     ?>
     </div>
