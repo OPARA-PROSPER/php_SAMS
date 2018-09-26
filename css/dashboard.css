@@ -162,6 +162,12 @@ section input[type=submit]{
     background: rgb(54, 180, 54);
     color: white;
 }
+#lecturer_comment{
+    /* border-top-left-radius: 50px;  */
+    /* border-bottom-left-radius: 50px;  */
+    width: 100%;
+    margin-left: 5em; 
+}
 
 #file{
     width: 0.1px;
@@ -236,6 +242,13 @@ aside{
     margin: 0;
     padding: 5px 0;
     color: black;
+    /* height: 500px; */
+}
+#Sub_assignment{
+    background: rgb(255, 187, 0);
+    padding: 5px 0;
+    color: black;
+    margin-top: 2em;
 }
 .oubx{
     width: 30%;

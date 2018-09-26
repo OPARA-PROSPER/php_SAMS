@@ -32,7 +32,7 @@ $type = $_SESSION["type"];
 
 <header>
     
-    <img src="../img/opara.png" alt="">
+    <img src="../img/futo.png" alt="">
     <div id="detail"><?php echo"@$username" ?></div>
     <a href="#">
     <button id="edit_button">
@@ -123,7 +123,7 @@ $type = $_SESSION["type"];
     $ib = '';
     foreach($result as $row){
         $ib .= '<div class="oubx">' 
-        . '<a href="'.$row->file_path.'" id="student_name">' . $row->file_name . '</a>'
+        . '<a href="'.$row->file_path.'" id="student_name" target="blank">' . $row->file_name . '</a>'
         . '</div>';
     }
 

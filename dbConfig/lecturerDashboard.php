@@ -32,7 +32,7 @@ $type = $_SESSION["type"];
 
 <header>
     
-    <img src="../img/opara.png" alt="">
+    <img src="../img/futo.png" alt="">
     <div id="detail"><?php echo"@$username" ?></div>
     <a href="#">
     <button id="edit_button">
@@ -82,7 +82,7 @@ $type = $_SESSION["type"];
     <div class="assignment_form">
         <!-- <button class="file" id="upload_button">+</button> -->
         <form id="assignment_form" class="assignment_form">
-            <input  id="assignment_input" type="text" placeholder="Enter message here...">
+            <input  id="lecturer_comment" type="text" placeholder="Enter message here...">
             <input type="submit" value="submit" name="text_submit">
         </form>
     </div>
@@ -131,6 +131,29 @@ $type = $_SESSION["type"];
     ?>
     </div>
 
+  <h2 id="Sub_assignment">Submitted Assignment</h2>
+
+    <div id="sub">
+    <?php
+
+    // require 'db.php';
+    $sql = " select * from uploads ";
+    $prep = $conn ->prepare($sql);
+    $prep->execute();
+
+    $result = $prep ->fetchAll(PDO::FETCH_OBJ);
+    $ib = '';
+    foreach($result as $row){
+        $ib .= '<div class="oubx">' 
+        . '<a href="'.$row->file_path.'" id="student_name" target="blank">' . $row->file_name . '</a>'
+        . '</div>';
+    }
+
+    echo ( $ib );
+    ?>
+
+    </div>
+
     </div>
 
 
@@ -168,19 +191,6 @@ app.uploader({
 });
 });
 
-// // let Reg_Students = document.getElementById("registered_students").children[0];
-// let li = document.createElement("div");
-// Reg_Students.appendChild(li);
-// li.textContent = "<?php 
-// require 'db.php';
-// $sql = "SELECT * FROM coursereg";
-// $prep = $conn ->prepare($sql);
-// $prep->execute();
-// 
-// $result = $prep ->fetchAll(PDO::FETCH_OBJ);
-// 
-// echo $result;
-// ?>"
-// </script>
+</script>
 </body>
 </html>
