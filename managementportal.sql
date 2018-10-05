@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 19, 2018 at 12:12 PM
+-- Generation Time: Oct 05, 2018 at 04:05 PM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -31,6 +31,7 @@ CREATE DATABASE `managementportal`;
 
 CREATE TABLE `coursereg` (
   `id` int(11) NOT NULL,
+  `studentName` varchar(50) NOT NULL,
   `course1` varchar(50) NOT NULL,
   `course2` varchar(50) NOT NULL,
   `course3` varchar(50) NOT NULL,
@@ -47,8 +48,10 @@ CREATE TABLE `coursereg` (
 -- Dumping data for table `coursereg`
 --
 
--- -- INSERT INTO `coursereg` (`id`, `course1`, `course2`, `course3`, `course4`, `course5`, `course6`, `course7`, `course8`, `course9`, `course10`) VALUES
--- (7, 'mth201', 'csc245', 'csc201', 'csc222', 'csc205', 'csc223', 'csc245', 'csc114', 'csc244', 'csc278');
+INSERT INTO `coursereg` (`id`, `studentName`, `course1`, `course2`, `course3`, `course4`, `course5`, `course6`, `course7`, `course8`, `course9`, `course10`) VALUES
+(16, 'prosper_faith', 'svg331', 'svg322', 'csc333', 'bdt456', 'mth333', 'gns644', 'htu444', 'ens899', 'ens444', 'ght443'),
+(17, 'prosper_faith', 'svg331', 'svg322', 'csc333', 'bdt456', 'mth333', 'gns644', 'htu444', 'ens899', 'ens444', 'ght443'),
+(18, 'Olisakwe_Nnwana', 'svg331', 'svg322', 'csc333', 'bdt456', 'mth333', 'gns644', 'htu444', 'ens899', 'ens444', 'ght443');
 
 -- --------------------------------------------------------
 
@@ -71,8 +74,36 @@ CREATE TABLE `lecturer` (
 -- Dumping data for table `lecturer`
 --
 
--- -- INSERT INTO `lecturer` (`id`, `firstName`, `lastName`, `IDNumber`, `faculty`, `username`, `email`, `password`) VALUES
--- (1, 'Anthony', 'Chukwocha', '564545', 'SOES', 'AC_CHUKWOCHA', 'jamesBond@gmail.com', 'thiurgntg');
+INSERT INTO `lecturer` (`id`, `firstName`, `lastName`, `IDNumber`, `faculty`, `username`, `email`, `password`) VALUES
+(1, 'Anthony', 'Chukwocha', '564545', 'SOES', 'AC_CHUKWOCHA', 'jamesBond@gmail.com', 'thiurgntg'),
+(2, 'Richard', 'Njoku', '419', 'SOES', 'njoku@richard', 'kalurichard@gmail.com', 'njoku'),
+(3, 'olisakwe', 'ogu', '+2345', 'SOES', 'Olisakwe_Nnwana', 'olisakwe@gmail.com', 'olisakwe'),
+(4, 'cosmos', 'alaba', '2342018', 'SMAT', 'cosmos_alaba', 'cosmosalaba@gmail.com', 'cosmos');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `lecturer_coursereg`
+--
+
+CREATE TABLE `lecturer_coursereg` (
+  `id` int(11) NOT NULL,
+  `lecturerName` varchar(150) NOT NULL,
+  `course1` varchar(100) NOT NULL,
+  `course2` varchar(100) NOT NULL,
+  `course3` varchar(100) NOT NULL,
+  `course4` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `lecturer_coursereg`
+--
+
+INSERT INTO `lecturer_coursereg` (`id`, `lecturerName`, `course1`, `course2`, `course3`, `course4`) VALUES
+(2, 'njoku@richard', 'mth201', 'csc245', 'csc201', 'csc222'),
+(3, 'njoku@richard', 'htu444', 'gns644', 'mth333', 'ens899'),
+(4, 'njoku@richard', 'svg331', 'svg322', 'csc333', 'bdt456'),
+(5, 'Olisakwe_Nnwana', 'svg331', 'gns644', 'csc211', 'bdt456');
 
 -- --------------------------------------------------------
 
@@ -96,7 +127,8 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`id`, `firstName`, `lastName`, `regNumber`, `faculty`, `username`, `email`, `password`) VALUES
-(1, 'prosper', 'Afahaene', '20151010011', 'SEET', 'prosper_Afe', 'oparaprosper79@gmail.com', 'thisboy');
+(1, 'prosper', 'Afahaene', '20151010011', 'SEET', 'prosper_Afe', 'oparaprosper79@gmail.com', 'thisboy'),
+(2, 'prosper', 'faith', '57565656565', 'SAAT', 'prosper_faith', 'kalurichard@gmail.com', 'prosper');
 
 -- --------------------------------------------------------
 
@@ -106,6 +138,7 @@ INSERT INTO `student` (`id`, `firstName`, `lastName`, `regNumber`, `faculty`, `u
 
 CREATE TABLE `uploads` (
   `id` int(11) NOT NULL,
+  `studentName` varchar(100) NOT NULL,
   `file_name` varchar(50) NOT NULL,
   `file_type` varchar(10) NOT NULL,
   `file_size` varchar(10) NOT NULL,
@@ -117,11 +150,8 @@ CREATE TABLE `uploads` (
 -- Dumping data for table `uploads`
 --
 
-INSERT INTO `uploads` (`id`, `file_name`, `file_type`, `file_size`, `file_path`, `date`) VALUES
-(26, 'ALC PREP.pdf', 'applicatio', '513215', 'uploads/5ba20050262f77.18687618.pdf', '2018-09-19'),
-(27, 'campusBadge.png', 'image/png', '360598', 'uploads/5ba209a8b2c434.98684921.png', '2018-09-19'),
-(28, 'badnetwork.PNG', 'image/png', '28796', 'uploads/5ba2206f93e6a3.03449938.png', '2018-09-19'),
-(29, 'sam.jpg', 'image/jpeg', '202417', 'uploads/5ba2208fac5a39.89279897.jpg', '2018-09-19');
+INSERT INTO `uploads` (`id`, `studentName`, `file_name`, `file_type`, `file_size`, `file_path`, `date`) VALUES
+(43, 'Olisakwe_Nnwana', 'schoolfee.PNG', 'image/png', '83596', 'uploads/5bb708015639c6.21065001.png', '2018-10-05');
 
 --
 -- Indexes for dumped tables
@@ -137,6 +167,12 @@ ALTER TABLE `coursereg`
 -- Indexes for table `lecturer`
 --
 ALTER TABLE `lecturer`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `lecturer_coursereg`
+--
+ALTER TABLE `lecturer_coursereg`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -159,22 +195,27 @@ ALTER TABLE `uploads`
 -- AUTO_INCREMENT for table `coursereg`
 --
 ALTER TABLE `coursereg`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `lecturer`
 --
 ALTER TABLE `lecturer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `lecturer_coursereg`
+--
+ALTER TABLE `lecturer_coursereg`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `uploads`
 --
 ALTER TABLE `uploads`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;COMMIT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
