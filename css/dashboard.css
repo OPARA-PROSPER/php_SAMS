@@ -139,8 +139,8 @@ td{
     text-align: center;
     border: none;
     margin: .15em 0 0;-
-
 }
+
 /* css styling for the input forms including the upload button */
 .assignment_form{
     display: flex;
@@ -169,7 +169,7 @@ section input[type=submit]{
     margin-left: 5em; 
 }
 
-#file{
+#file, #profile_photo{
     width: 0.1px;
 	height: 0.1px;
 	opacity: 0;
@@ -177,7 +177,7 @@ section input[type=submit]{
 	position: absolute;
 	z-index: -1;
 }
-#file_icon{
+#file_icon,#profile_photo_label{
     cursor: pointer;
 }
 .file{
@@ -216,6 +216,19 @@ aside{
     text-align: center;
 }
 
+
+#profile_photo_label{
+    font-size: 15px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(214, 86, 92);
+    display: inline-block;
+    width: 100px;
+    padding: .5em;
+    text-align: center;
+    border: none;
+    border-radius: 20px;
+    margin: .5em 0 0;-
+}
 
 /* Upload bar css styling */
 .bar{
