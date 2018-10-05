@@ -30,10 +30,11 @@ $type = $_SESSION["type"];
 </head>
 <body>
 <div id="result">
-        <form action="#">
-            <input type="email" placeholder="Enter student email">
-            <input type="text" placeholder="Enter student result">
-            <input type="submit" value="Send Result">
+        <button id="result_hide_button">close</button>
+        <form action="mail.php" method="post" id="result_form">
+            <input type="email"  id="student_email"  name="student_email"  placeholder="Enter student email">
+            <input type="text"   id="result_message" name="result_message" placeholder="Enter student result">
+            <input type="submit" id="result_submit"  value="Send Result"   name="result_submit" >
         </form>
     </div>
 
@@ -208,6 +209,8 @@ $type = $_SESSION["type"];
 
 let std_name = document.querySelector("#sub");
 let std_result = document.querySelector("#show_result");
+let Result_form = document.forms["result_form"];
+let result_hide_button = document.getElementById("result_hide_button");
 
 console.log(std_name);
 
@@ -218,6 +221,29 @@ std_name.addEventListener("click", (e) => {
 std_result.addEventListener("click", () => {
     const show_result = document.querySelector("#result");
     show_result.style.display = "block";
+})
+
+Result_form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    let student_email = document.getElementById("student_email");
+    let result_message = document.getElementById("result_message");
+    let http = new XMLHttpRequest();
+
+    http.addEventListener("readystatechange", () => {
+        if(http.readyState === 4 && http.status === 200){
+            alert("Result was sent successfully");
+        }
+    })
+
+    http.open('post', 'mail.php', true);
+    http.send('email=' + student_email.value + '&message=' + result_message.value);
+});
+
+result_hide_button.addEventListener("click", () => {
+    let hide_result = document.getElementById("result");
+
+    hide_result.style.display = "none";
 })
 </script>
 </body>

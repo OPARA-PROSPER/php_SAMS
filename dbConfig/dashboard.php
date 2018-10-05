@@ -92,7 +92,7 @@ $type = $_SESSION["type"];
     </article>
 
 <div id="upload_div">
-    <button id="hide_button">*</button>
+    <button id="hide_button">close</button>
     <form id="upload_form" action="upload.php" method="post" enctype="multipart/form-data">
         <input type="file" name="file" id="file">
         <label for="file" id="file_icon" name="filelabel"> + </label>

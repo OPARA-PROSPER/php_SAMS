@@ -325,3 +325,15 @@ aside{
     background: rgb(214, 86, 92);
     color: white;
 }
+
+#result_hide_button{
+    background: rgb(214, 86, 92);
+    font-size: 20px;
+    padding: .2em .5em;
+    border: none;
+    border-radius: 5px;
+    position: relative;
+    top: 9em;
+    left: 8em;
+    color: white;
+}
