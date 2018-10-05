@@ -29,6 +29,13 @@ $type = $_SESSION["type"];
     <link rel="stylesheet" href="../css/dashboard.css">
 </head>
 <body>
+<div id="result">
+        <form action="#">
+            <input type="email" placeholder="Enter student email">
+            <input type="text" placeholder="Enter student result">
+            <input type="submit" value="Send Result">
+        </form>
+    </div>
 
 <header>
     
@@ -61,17 +68,22 @@ $type = $_SESSION["type"];
         </table>
 
         <a href="editProfile.php">
-        <button id="edit_button">
+        <button class="edit_button">
             edit profile
         </button>
         </a>
 
         <a href="lecturer_coursereg.php">
-            <button id="edit_button">
+            <button class="edit_button">
                 Register courses
             </button>
         </a>
+
+        <button class="edit_button" id="show_result">send result</button>
     </div>
+    
+    
+
     
 
     
@@ -148,21 +160,34 @@ $type = $_SESSION["type"];
 
   <h2 id="Sub_assignment">Submitted Assignment</h2>
 
-    <div id="sub">
+    <div id="sub1">
     <?php
 
     // require 'db.php';
+    $sql_course = " select * from coursereg ";
+    $prep_course = $conn ->prepare($sql_course);
+    $prep_course->execute();
+
+    $result_course = $prep_course ->fetchAll(PDO::FETCH_OBJ);
+
     $sql = " select * from uploads ";
     $prep = $conn ->prepare($sql);
     $prep->execute();
 
     $result = $prep ->fetchAll(PDO::FETCH_OBJ);
     $ib = '';
-    foreach($result as $row){
-        $ib .= '<div class="oubx">' 
-        . '<a href="'.$row->file_path.'" id="student_name" target="blank">' . $row->file_name . '</a>'
-        . '</div>';
+
+    
+    foreach($result_course as $std){
+        foreach($result as $row){
+            if($std->studentName == $row->studentName){
+            $ib .= '<div class="oubx">' 
+            . '<a href="'.$row->file_path.'" id="student_name_file" target="blank">' . $row->file_name . '</a>'
+            . '</div>';
+            }
+        }
     }
+
 
     echo ( $ib );
     ?>
@@ -178,34 +203,22 @@ $type = $_SESSION["type"];
 </aside>
 
 
-<script src="../js/dashboard.js"></script>
+<!-- <script src="../js/dashboard.js"></script> -->
 <script>
-    document.getElementById('submit').addEventListener("click", (e) => {
-    e.preventDefault();
 
-    // console.log("click");
+let std_name = document.querySelector("#sub");
+let std_result = document.querySelector("#show_result");
 
-var files = document.getElementById("file");
-var progressBar = document.getElementById("pb");
-var progressText = document.getElementById("pt");
-var bar = document.getElementById("bar");
-app.uploader({
-    files,
-    bar,
-    progressBar,
-    progressText,
-    processor: 'upload.php',
-    
-    finished(data){
-        console.log(data);
-    },
+console.log(std_name);
 
-    error(){
-        Console.log("not working");
-    }
-});
+std_name.addEventListener("click", (e) => {
+    alert("Registered");
 });
 
+std_result.addEventListener("click", () => {
+    const show_result = document.querySelector("#result");
+    show_result.style.display = "block";
+})
 </script>
 </body>
 </html>

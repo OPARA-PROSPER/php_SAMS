@@ -27,6 +27,7 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `coursereg`
 --
+CREATE DATABASE `managementportal`;
 
 CREATE TABLE `coursereg` (
   `id` int(11) NOT NULL,
@@ -46,8 +47,8 @@ CREATE TABLE `coursereg` (
 -- Dumping data for table `coursereg`
 --
 
-INSERT INTO `coursereg` (`id`, `course1`, `course2`, `course3`, `course4`, `course5`, `course6`, `course7`, `course8`, `course9`, `course10`) VALUES
-(7, 'mth201', 'csc245', 'csc201', 'csc222', 'csc205', 'csc223', 'csc245', 'csc114', 'csc244', 'csc278');
+-- -- INSERT INTO `coursereg` (`id`, `course1`, `course2`, `course3`, `course4`, `course5`, `course6`, `course7`, `course8`, `course9`, `course10`) VALUES
+-- (7, 'mth201', 'csc245', 'csc201', 'csc222', 'csc205', 'csc223', 'csc245', 'csc114', 'csc244', 'csc278');
 
 -- --------------------------------------------------------
 
@@ -70,8 +71,8 @@ CREATE TABLE `lecturer` (
 -- Dumping data for table `lecturer`
 --
 
-INSERT INTO `lecturer` (`id`, `firstName`, `lastName`, `IDNumber`, `faculty`, `username`, `email`, `password`) VALUES
-(1, 'Anthony', 'Chukwocha', '564545', 'SOES', 'AC_CHUKWOCHA', 'jamesBond@gmail.com', 'thiurgntg');
+-- -- INSERT INTO `lecturer` (`id`, `firstName`, `lastName`, `IDNumber`, `faculty`, `username`, `email`, `password`) VALUES
+-- (1, 'Anthony', 'Chukwocha', '564545', 'SOES', 'AC_CHUKWOCHA', 'jamesBond@gmail.com', 'thiurgntg');
 
 -- --------------------------------------------------------
 

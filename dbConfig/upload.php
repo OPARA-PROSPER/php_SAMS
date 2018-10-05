@@ -15,6 +15,7 @@ if(isset($file)){
     $fileTempLocation = $file['tmp_name'];
     $uploadStatus = $file['error'];
     $fileSize = $file['size'];
+    $username = $_SESSION["username"];
 
     $fileNameExpload = explode('.', $fileName);
     $fileExt = strtolower(end($fileNameExpload));
@@ -32,7 +33,7 @@ if(isset($file)){
                     // exit();
 
                     require 'db.php';
-                    $sql = "INSERT INTO `uploads`(`id`, `studentName`, `file_name`, `file_type`, `file_size`, `file_path`, `date`) VALUES (NULL, '$_SESSION["username"]', '$fileName', '$fileType', '$fileSize', '$uploadLocation', CURRENT_TIMESTAMP)";
+                    $sql = "INSERT INTO `uploads`( `studentName`, `file_name`, `file_type`, `file_size`, `file_path`, `date`) VALUES ( '$username', '$fileName', '$fileType', '$fileSize', '$uploadLocation', CURRENT_TIMESTAMP)";
                     $prep = $conn->prepare($sql);
                     $prep->execute();
 
