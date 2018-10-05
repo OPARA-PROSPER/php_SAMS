@@ -44,10 +44,10 @@ $type = $_SESSION["type"];
     <div id="detail"><?php echo"@$username" ?></div>
 
     <div id="profile_picture">
-        <form id="profile_photo_form" action="upload.php" method="post" enctype="multipart/form-data">
+        <form id="profile_photo_form" action="profile-photo.php" method="post" enctype="multipart/form-data">
             <input type="file" name="profile_photo" id="profile_photo">
-            <label for="profile_photo" id="profile_photo_label" name="profile_photo_label"> change photo </label>
-            <input type="hidden" value="submit" name="submit" id="submit" hide="true">
+            <label for="profile_photo" id="profile_photo_label" name="profile_photo_label"> select photo </label>
+            <input type="submit" value="submit" name="profile_photo_submit" id="profile_photo_submit">
         </form>
     </div>
 
@@ -209,6 +209,7 @@ $type = $_SESSION["type"];
 
 
 <!-- <script src="../js/dashboard.js"></script> -->
+<script src="../js/profile_photo.js"></script>
 <script>
 
 let std_name = document.querySelector("#sub");

@@ -34,11 +34,15 @@ $type = $_SESSION["type"];
     
     <img src="../img/futo.png" alt="">
     <div id="detail"><?php echo"@$username" ?></div>
-    <a href="#">
-    <button id="edit_button">
-        change photo
-    </button>
-    </a>
+    
+    <div id="profile_picture">
+        <form id="profile_photo_form" action="upload.php" method="post" enctype="multipart/form-data">
+            <input type="file" name="profile_photo" id="profile_photo">
+            <label for="profile_photo" id="profile_photo_label" name="profile_photo_label"> change photo </label>
+            <input type="hidden" value="submit" name="submit" id="submit" hide="true">
+        </form>
+    </div>
+
     <div id="user_details">
         <h2> Details</h2>
         <table>
