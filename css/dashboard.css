@@ -231,11 +231,11 @@ aside{
     margin: .5em 0 0;-
 }
 #profile_photo_submit{
-    padding: .1em .5em .35em;
+    padding: .45em .5em .55em;
     margin-left: -.5em;
     border: none;
     background: rgb(255, 187, 0);
-    font-size: 20px;
+    font-size: 15px;
 }
 /* Upload bar css styling */
 .bar{

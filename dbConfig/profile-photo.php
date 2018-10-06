@@ -1,8 +1,11 @@
 <?php
 session_start();
+// header("Content-Type: application/json");
 
-if(isset($_POST["profile_photo_submit"])){
-    $file = $_POST["profile_photo"];
+$file = $_FILES["profile_photo"];
+// if(isset($_POST["profile_photo_submit"])){
+    // if($_SERVER["REQUEST_METHOD"] === "POST"){
+    if(isset($file)){
     // This lines of codes gets the details of the file been uploaded
     $fileName = $file['name'];
     $fileType = $file['type'];

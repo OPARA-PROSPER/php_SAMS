@@ -8,13 +8,14 @@ photo_form.addEventListener("submit", (e) => {
     submitButton.innerHTML = "loading...";
 
     let file = photo_input.files[0];
-    let formdata = new FormData();
+    let formData = new FormData();
 
     console.log(file)
     // Add the file to the request.
-    formdata.append('profile_photo', file, file.name);
+    formData.append('profile_photo', file, file.name);
 
     let http = new XMLHttpRequest();
+    http.open('post', '../dbConfig/profile-photo.php');
 
     http.addEventListener("readystatechange", () => {
         if (http.status === 200 && http.readyState === 4) {
@@ -25,13 +26,9 @@ photo_form.addEventListener("submit", (e) => {
         }
       });
 
-    http.open('POST', '../dbConfig/profile-photo.php', true);
-
     
-      
-
-      http.send(formdata);
-
-      console.log(formdata);
+    http.send(formData);
+    
+    console.log(formData);
 
 });

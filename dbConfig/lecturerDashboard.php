@@ -45,7 +45,7 @@ $type = $_SESSION["type"];
 
     <div id="profile_picture">
         <form id="profile_photo_form" action="profile-photo.php" method="post" enctype="multipart/form-data">
-            <input type="file" name="profile_photo" id="profile_photo">
+            <input type="file" name="profile_photo" id="profile_photo" />
             <label for="profile_photo" id="profile_photo_label" name="profile_photo_label"> select photo </label>
             <input type="submit" value="submit" name="profile_photo_submit" id="profile_photo_submit">
         </form>
