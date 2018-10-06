@@ -42,11 +42,15 @@ $type = $_SESSION["type"];
     
     <img src="../img/futo.png" alt="">
     <div id="detail"><?php echo"@$username" ?></div>
-    <a href="#">
-    <button id="edit_button">
-        change photo
-    </button>
-    </a>
+
+    <div id="profile_picture">
+        <form id="profile_photo_form" action="profile-photo.php" method="post" enctype="multipart/form-data">
+            <input type="file" name="profile_photo" id="profile_photo" />
+            <label for="profile_photo" id="profile_photo_label" name="profile_photo_label"> select photo </label>
+            <input type="submit" value="submit" name="profile_photo_submit" id="profile_photo_submit">
+        </form>
+    </div>
+
     <div id="user_details">
         <h2> Details</h2>
         <table>
@@ -205,6 +209,7 @@ $type = $_SESSION["type"];
 
 
 <!-- <script src="../js/dashboard.js"></script> -->
+<script src="../js/profile_photo.js"></script>
 <script>
 
 let std_name = document.querySelector("#sub");
