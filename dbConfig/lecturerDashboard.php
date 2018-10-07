@@ -97,9 +97,10 @@ $type = $_SESSION["type"];
 <section id="submit_assignment">
 
     <div class="assignment_form">
-        <!-- <button class="file" id="upload_button">+</button> -->
+        <button class="file" id="upload_button">+</button>
         <form id="assignment_form" class="assignment_form">
-            <input  id="lecturer_comment" type="text" placeholder="Enter message here...">
+        <!-- <label for="lecturer_comment" id="lecturer_label">Set Deadline</label> -->
+            <input  id="lecturer_comment" type="date" placeholder="Enter message here...">
             <input type="submit" value="submit" name="text_submit">
         </form>
     </div>
@@ -108,18 +109,21 @@ $type = $_SESSION["type"];
     <article id="post">
     </article>
 
-<!-- <div id="upload_div"> -->
-    <!-- <button id="hide_button">*</button> -->
-    <!-- <form id="upload_form" action="upload.php" method="post" enctype="multipart/form-data"> -->
-        <!-- <input type="file" name="file" id="file"> -->
-        <!-- <label for="file" id="file_icon" name="filelabel"> + </label> -->
-        <!-- <input type="submit" value="submit" name="submit" id="submit"> -->
-        <!-- <div class="bar" id="bar"> -->
-            <!-- <span class="bar-fill" id="pb"> -->
-            <!-- </span> -->
-        <!-- </div> -->
-    <!-- </form> -->
-<!-- </div> -->
+<div id="upload_div">
+    <button id="hide_button">close</button>
+    <form id="upload_form" action="lecturer_upload.php" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" id="file">
+        <label for="file" id="file_icon" name="filelabel"> select file </label>
+        <input type="submit" value="submit" name="submit" id="submit">
+    </form>
+    
+    <form action="lecturer_upload.php" id="deadline" method="post">
+        <label for="deadline_comment">Set deadline</label>
+        <input type="date" name="deadline_comment" id="deadline_comment" placeholder="Set Assignment Deadline">
+        <input type="submit" name="set_deadline" value="set_deadline">
+    </form>
+    
+</div>
     
 
 </section>
@@ -208,8 +212,8 @@ $type = $_SESSION["type"];
 </aside>
 
 
-<!-- <script src="../js/dashboard.js"></script> -->
-<script src="../js/profile_photo.js"></script>
+<script src="../js/dashboard.js"></script>
+<!-- <script src="../js/profile_photo.js"></script> -->
 <script>
 
 let std_name = document.querySelector("#sub");
