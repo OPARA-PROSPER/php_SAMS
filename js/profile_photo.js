@@ -16,6 +16,7 @@ photo_form.addEventListener("submit", (e) => {
 
     let http = new XMLHttpRequest();
     http.open('post', '../dbConfig/profile-photo.php');
+    // http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
     http.addEventListener("readystatechange", () => {
         if (http.status === 200 && http.readyState === 4) {

@@ -36,10 +36,10 @@ $type = $_SESSION["type"];
     <div id="detail"><?php echo"@$username" ?></div>
     
     <div id="profile_picture">
-        <form id="profile_photo_form" action="upload.php" method="post" enctype="multipart/form-data">
-            <input type="file" name="profile_photo" id="profile_photo">
-            <label for="profile_photo" id="profile_photo_label" name="profile_photo_label"> change photo </label>
-            <input type="hidden" value="submit" name="submit" id="submit" hide="true">
+        <form id="profile_photo_form" action="profile-photo.php" method="post" enctype="multipart/form-data">
+            <input type="file" name="profile_photo" id="profile_photo" />
+            <label for="profile_photo" id="profile_photo_label" name="profile_photo_label"> select photo </label>
+            <input type="submit" value="submit" name="profile_photo_submit" id="profile_photo_submit">
         </form>
     </div>
 
@@ -99,7 +99,7 @@ $type = $_SESSION["type"];
     <button id="hide_button">close</button>
     <form id="upload_form" action="upload.php" method="post" enctype="multipart/form-data">
         <input type="file" name="file" id="file">
-        <label for="file" id="file_icon" name="filelabel"> + </label>
+        <label for="file" id="file_icon" name="filelabel"> select file </label>
         <input type="submit" value="submit" name="submit" id="submit">
 
         <div class="bar" id="bar">
@@ -113,12 +113,85 @@ $type = $_SESSION["type"];
 </section>
 
 <aside>
-    <h3 class="Reg_student">Submitted Assignment</h3>
-    
+    <h2 class="Reg_student">Assignments</h2>
+
     <div id="sub">
     <?php
 
     require 'db.php';
+    $sql = " select * from lecturer_upload ";
+    $prep = $conn ->prepare($sql);
+    $prep->execute();
+
+    $result = $prep ->fetchAll(PDO::FETCH_OBJ);
+    
+
+    $lect_sql = "select * from lecturer_coursereg";
+    $lect_prep = $conn->prepare($lect_sql);
+    $lect_prep->execute();
+
+    $lect_result = $lect_prep->fetchAll(PDO::FETCH_OBJ);
+
+    $std_sql = " select * from coursereg";
+    $std_prep = $conn->prepare($std_sql);
+    $std_prep->execute();
+
+    $std_result = $std_prep->fetchAll(PDO::FETCH_OBJ);
+
+    $ib = '';
+
+    foreach($result as $row){
+        foreach($lect_result as $lect_row){
+            if($lect_row->lecturerName === $row->lecturerName){
+                foreach($std_result as $std_row){
+                    if($std_row->studentName === $_SESSION["username"]){
+                        if( ($lect_row->course1 == $std_row->course1 || $std_row->course2 || $std_row->course3 || $std_row->course4 || $std_row->course5 || $std_row->course6 || $std_row->course7 || $std_row->course8 || $std_row->course9 || $std_row->course10) || ($lect_row->course2 == $std_row->course1 || $std_row->course2 || $std_row->course3 || $std_row->course4 || $std_row->course5 || $std_row->course6 || $std_row->course7 || $std_row->course8 || $std_row->course9 || $std_row->course10) || ($lect_row->course3 == $std_row->course1 || $std_row->course2 || $std_row->course3 || $std_row->course4 || $std_row->course5 || $std_row->course6 || $std_row->course7 || $std_row->course8 || $std_row->course9 || $std_row->course10) || ($lect_row->course4 == $std_row->course1 || $std_row->course2 || $std_row->course3 || $std_row->course4 || $std_row->course5 || $std_row->course6 || $std_row->course7 || $std_row->course8 || $std_row->course9 || $std_row->course10) ){
+                            $ib .= '<div class="oubx">' 
+                        . '<a href="'.$row->file_path.'" id="student_name_file" target="blank">' . $row->file_name. '</a>'
+                        . '</div>';
+                        }
+                    }
+                }
+            }         
+        }    
+    }
+
+            
+    echo ( $ib );
+    ?>
+    </div>
+
+    <h2 id="Sub_assignment">Deadlines</h2>
+    <div id="sub">
+    <?php
+    // require 'db.php';
+    $sql = " select * from deadline ";
+    $prep = $conn ->prepare($sql);
+    $prep->execute();
+
+    $result = $prep ->fetchAll(PDO::FETCH_OBJ);
+    $ib = '';
+    foreach($result as $row){
+        // if($row->lecturerName === $_SESSION["username"]){
+            $ib .= '<div class="deadline_name">' 
+            . '<div>' . '<span id="deadline_lec">' . $row->lecturerName . '</span>' . '<span>' . $row->date . '</span>' . '</div>'
+            . '</div>';
+        // }
+    }
+
+    echo ( $ib );
+?>
+        
+        
+    </div>
+
+    <h2 id="Sub_assignment">Submitted Assignment</h2>
+
+    
+    <div id="sub">
+    <?php
+
+    // require 'db.php';
     $sql = " select * from uploads ";
     $prep = $conn ->prepare($sql);
     $prep->execute();
@@ -126,9 +199,11 @@ $type = $_SESSION["type"];
     $result = $prep ->fetchAll(PDO::FETCH_OBJ);
     $ib = '';
     foreach($result as $row){
-        $ib .= '<div class="oubx">' 
-        . '<a href="'.$row->file_path.'" id="student_name" target="blank">' . $row->file_name . '</a>'
-        . '</div>';
+        if($row->studentName === $_SESSION["username"]){
+            $ib .= '<div class="oubx">' 
+            . '<a href="'.$row->file_path.'" id="student_name" target="blank">' . $row->file_name . '</a>'
+            . '</div>';
+        }
     }
 
     echo ( $ib );
@@ -143,32 +218,5 @@ $type = $_SESSION["type"];
 
 
 <script src="../js/dashboard.js"></script>
-<script>
-    document.getElementById('submit').addEventListener("click", (e) => {
-    e.preventDefault();
-
-    // console.log("click");
-
-var files = document.getElementById("file");
-var progressBar = document.getElementById("pb");
-var progressText = document.getElementById("pt");
-var bar = document.getElementById("bar");
-app.uploader({
-    files,
-    bar,
-    progressBar,
-    progressText,
-    processor: 'upload.php',
-    
-    finished(data){
-        console.log(data);
-    },
-
-    error(){
-        Console.log("not working");
-    }
-});
-});
-// </script>
 </body>
 </html>

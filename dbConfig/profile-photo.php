@@ -3,8 +3,7 @@ session_start();
 // header("Content-Type: application/json");
 
 $file = $_FILES["profile_photo"];
-// if(isset($_POST["profile_photo_submit"])){
-    // if($_SERVER["REQUEST_METHOD"] === "POST"){
+
     if(isset($file)){
     // This lines of codes gets the details of the file been uploaded
     $fileName = $file['name'];
@@ -34,7 +33,11 @@ $file = $_FILES["profile_photo"];
                     $prep = $conn->prepare($sql);
                     $prep->execute();
 
-                   
+                    if($_SESSION["type"] === "lecturer"){
+                        header("Location: lecturerDashboard.php?Upload_successful");
+                    }else{
+                        header("Location: dashboard.php?Upload_successful");
+                    }
                 }
             }else{
                 $_SESSION['error'] = "The file is too large";

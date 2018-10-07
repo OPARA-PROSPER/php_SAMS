@@ -105,13 +105,15 @@ td{
     width: 100%;
     height: 100vh;
     background: rgba(0,0,0,0.5);
+    /* text-align: center; */
 }
 #upload_form{
     position: relative;
     top: 30%;
+    right: .5%;
     width: 30%;
     border: none;
-    padding: 5em 0;
+    padding: 5em 0 10em;
     margin: auto;
     text-align: center;
     background: rgb(15, 15, 15);
@@ -119,26 +121,68 @@ td{
 #hide_button{
     position: relative;
     top: 29.5%;
-    left: 62.5%;
+    left: 59.595%;
     border: none;
-    border-radius: 100%;
+    color: white;
     font-size: 20px;
     padding: 0 .5em;
-    background: rgb(233, 44, 44);
-    color: white;
+    background: rgb(214, 86, 92);
     line-height: 1.5em;
 }
+#deadline{
+    position: relative;
+    top: 10%;
+    left: 42%;
+    width: 15%;
+    /* background: red; */
+    text-align: center;
+}
+#deadline label{
+    background: rgb(214, 86, 92);
+    margin: 0;
+    padding: .5em 3.39em;
+    width: 90%;
+    /* font-size: 15px; */
+}
+#deadline_comment{
+    width: 90%;
+    padding: .49em;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
 #file + label{
-    font-size: 3em;
+    font-size: 15px;
     /* font-weight: 700; */
     color: white;
-    background-color: black;
-    display: inline-block;
-    width: 90px;
-    height: 70px;
+    background-color: rgb(110, 110, 110);
+    display: inline;
+    width: 100px;
+    padding: 1em ;
     text-align: center;
     border: none;
-    margin: .15em 0 0;-
+    margin: .15em 0 0;
+    border-top-left-radius: 10px;
+    /* border-bottom-left-radius: 10px; */
+}  
+#submit{
+    width: 100px;
+    margin: 0;
+    padding:.9em 1em 1em;
+    border-top-right-radius: 10px;
+    /* border-bottom-right-radius: 10px; */
+}
+#submit:hover{
+    background: rgb(214, 86, 92);
+}
+#lecturer_comment:hover{
+    /* padding: 0 3em; */
+    /* height: 0; */
+    content: "Set deadline";
+    /* width: 40%; */
+    background: black;
+    /* color: white; */
+    /* margin: 1em 0 0; */
+    /* line-height: 0px; */
 }
 
 /* css styling for the input forms including the upload button */
@@ -165,8 +209,8 @@ section input[type=submit]{
 #lecturer_comment{
     /* border-top-left-radius: 50px;  */
     /* border-bottom-left-radius: 50px;  */
-    width: 100%;
-    margin-left: 5em; 
+    width: 60%;
+    /* margin-left: 5em;  */
 }
 
 #file, #profile_photo{
@@ -192,11 +236,7 @@ section input[type=submit]{
     border: none;
     margin: .15em 0 0;
 }
-#submit{
-    width: 100px;
-    margin: 0;
-    padding:1.5em 0;
-}
+
 #file:focus + label,
 #file + label:hover {
     background-color: rgb(110, 110, 110);
@@ -307,6 +347,22 @@ aside{
     width: 90%;
     margin: 0 auto;
 }
+.deadline_name{
+    /* width: 500px; */
+    padding: .5em .5em .5em 0;
+    border: 1px solid rgb(240, 181, 21);
+    font-size: 12px;
+    background: rgb(54, 180, 54);
+    color: black;
+}
+#deadline_lec{
+    margin-right: 5px;
+    background:rgb(214, 86, 92);
+    padding: .5em;
+    color: white;
+}
+
+
 
 #result{
     display: none;
